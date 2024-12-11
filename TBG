@@ -1,0 +1,117 @@
+#include<iostream>
+using namespace std;
+
+//global variables
+string inventory[10];
+int playerhealth = 100;
+
+//function declaration
+void Balltesim();
+void NPC();
+
+int main() {
+	int room = 1;
+	string input;
+
+		switch (room) {
+		case 1:
+			cout << "you awake in a white room on a bed. you don't remember how you got there, but then you can hear an alarm go off" << endl;
+			cout << "" << endl;
+			cin >> input;
+			if (input == "s")
+				room = 2;
+			break;
+		case 2:
+			cout << "" << endl;
+			cout << "" << endl;
+			cin >> input;
+			if (input == "")
+				room = 3;
+			else if (input == "")
+				room = 1;
+			else if (input == "")
+				room = 4;
+			else if (input == "")
+				room = 5;
+			break;
+		case 3:
+			cout << "" << endl;
+			cin >> input;
+			if (input == "")
+				room = 5;
+			break;
+		case 4:
+			cout << "" << endl;
+			cin >> input;
+			if (input == "n")
+				room = 2;
+			break;
+		case 5:
+			cout << "" << endl;
+			cin >> input;
+			if (input == "")
+				room = 6;
+			break;
+		case 6:
+			cout << "" << endl;
+			cin >> input;
+			if (input == "")
+				room = 7;
+			break;
+		case 7:
+			cout << "" << endl;
+			cin >> input;
+			if (input == "")
+				room = 8;
+			break;
+		case 8:
+			cout << "" << endl;
+			cin >> input;
+			if (input == "")
+				room = 9;
+			break;
+		case 9:
+			cout << "" << endl;
+			cin >> input;
+			if (input == "")
+				room = 10;
+			break;
+		case 10:
+			cout << "" << endl;
+			cin >> input;
+			if (input == "")
+				room = 11;
+			break;
+		case 11:
+			break;
+
+		}//end switch
+
+
+
+}//end of main
+
+//function definitions 
+void NPC() {
+	int num = rand() % 100 + 1; //gets a number b/t 1-100
+	if (num < 10)//10% chance
+		cout << "" << endl;
+	else if (num < 15)//5% chance
+		cout << "" << endl;
+	else if (num < 30)//15% chance
+		cout << "" << endl;
+	else if (num < 50) {//20% chance
+		cout << "" << endl;
+
+		inventory[4] = "medkit";
+	}
+	else//50% chance
+		cout << "" << endl;
+}
+
+void Balltesim() {
+
+
+
+
+}
