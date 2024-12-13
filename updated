@@ -1,0 +1,232 @@
+
+#include<iostream>
+using namespace std;
+
+//global variables
+string inventory[8];
+int playerhealth = 100;
+
+//function declaration
+void NPC();
+void BattleSys();
+
+int main() {
+	int room = 1;
+	string input;
+	cout << endl << "--------------------------" << endl;
+	cout << "your inventory:";
+	for (int i = 0; i < 9; i++)
+		cout << inventory[i] << " | ";
+	cout << endl;
+
+
+	switch (room) {
+	case 1:
+		cout << "you wake up in bed from a loud alarm you wonder whats that about. you see your cellmate waking up as well" << endl;
+		cout << "you can go the out to the hallway(s) or you could talk to your cellmate(t)" << endl;
+		cin >> input;
+		if (input == "s")
+			room = 2;
+		break;
+	case 2:
+		cout << "as you walk into the hallway you see " << endl;
+		cout << "you can go north, south, or east" << endl;
+		cin >> input;
+		if (input == "s")
+			room = 3;
+		else if (input == "n")
+			room = 1;
+		else if (input == "e")
+			room = 5;
+		else if (inventory[2] != "baton") {
+			inventory[2] = "baton";
+			cout << "you got a baton!" << endl;
+		}
+		BattleSys(); //function call
+		cin >> input;
+		break;
+	case 3:
+		cout << "you're in room 3, you can go n" << endl;
+		cin >> input;
+		if (input == "n")
+			room = 2;
+		break;
+
+	case 4:
+		cout << "you're in room 4, you can go s" << endl;
+		cin >> input;
+		if (input == "s")
+			room = 5;
+		break;
+
+	case 5:
+		cout << "you're in room 5, you can go n, s or w" << endl;
+		cin >> input;
+		if (input == "n")
+			room = 4;
+		if (input == "s")
+			room = 7;
+		if (input == "w")
+			room = 2;
+		break;
+	case 6:
+		cout << "you're in room 6, you can go e" << endl;
+		cin >> input;
+		if (input == "e")
+			room = 7;
+		break;
+	case 7:
+		cout << "you're in room 7, you can go w, s or e" << endl;
+		cin >> input;
+		if (input == "s")
+			room = 8;
+		else if (input == "w")
+			room = 6;
+
+		break;
+	case 8:
+		cout << "you're in room 8, you can n" << endl;
+		cin >> input;
+		if (input == "n")
+			room = 7;
+		break;
+	case 9:
+		cout << "you're in room 9, you can go n or w" << endl;
+		cin >> input;
+		if (input == "n")
+			room = 10;
+		else if (input == "w")
+			room = 7;
+		break;
+	case 10:
+		cout << "you're in room 10, you can go w, n or s" << endl;
+		cin >> input;
+		if (input == "w")
+			room = 11;
+		else if (input == "s")
+			room = 9;
+		else if (input == "n")
+			room = 12;
+		break;
+	case 11:
+		cout << "you're in room 11, you can go e" << endl;
+		cin >> input;
+		if (input == "e")
+			room = 10;
+		break;
+
+	case 12:
+		cout << "you're in room 12, you can go e, n or s" << endl;
+		cin >> input;
+		if (input == "s")
+			room = 10;
+		else if (input == "n")
+			room = 13;
+		else if (input == "s")
+			room = 14;
+		break;
+
+	case 13:
+		cout << "you're in room 13, you can go s" << endl;
+		cin >> input;
+		if (input == "s")
+			room = 12;
+		break;
+
+	case 14:
+		cout << "you're in room 14, you can go w" << endl;
+		cin >> input;
+		if (input == "w")
+			room = 12;
+		break;
+
+	
+	}//end switch
+
+
+
+}//end of main
+
+//function definitions 
+void NPC() {
+	int num = rand() % 100 + 1; //gets a number b/t 1-100
+	if (num < 10)//10% chance
+		cout << "" << endl;
+	else if (num < 15)//5% chance
+		cout << "" << endl;
+	else if (num < 30)//15% chance
+		cout << "" << endl;
+	else if (num < 50) {//20% chance
+		cout << "here you go my friend" << endl;
+
+		inventory[4] = "medkit";
+	}
+	else//50% chance
+		cout << "" << endl;
+}
+
+//funcution definitions
+void BattleSys() {
+	int monsterhealth = 20;
+	int input;
+	int num;
+	cout << endl << endl << "-----------------------BATTLE TIME!!-----------------------" << endl;
+	while (playerhealth > 0 && monsterhealth > 0) {
+
+		//monster attack
+		if (inventory[1] == "armor") {
+			num = rand() % 7 + 3;
+			cout << "your armor absorbs the blow you get hit for" << num << " damage!" << endl;
+			monsterhealth -= num;
+		}
+		else {
+			num = rand() % 15 + 12;
+			cout << "the anomaly slashes your bare arm for" << num << " dmg" << endl;
+			monsterhealth -= num;
+		}
+		break;
+
+		//get player's choice:
+		cout << "press 1 to attack, 2 to use medkit, 3 to try to escape!" << endl;
+		cin >> input;
+
+		switch (input) {
+		case 1:
+			//player attack
+			if (inventory[2] == "baton") {
+				num = rand() % 10 + 10;
+				cout << "you hit the anomaly with your baton for" << num << " damage!" << endl;
+				monsterhealth -= num;
+			}
+			else {
+				num = rand() % 5 + 2;
+				cout << "you punch the anomaly for" << num << " dmg" << endl;
+				monsterhealth -= num;
+			}
+			break;
+
+		case 2: //health potion
+			if (inventory[3] == "medkit") {
+				cout << "" << endl;
+				playerhealth += 50;
+				inventory[3] = " "; //erase the potion
+			}
+			else cout << "sorry, you don't have any medkits." << endl;
+
+			break;
+
+		case 3://escape
+			num = rand() % 100;
+			if (num > 75) {//25% vchance of escaping
+				cout << "you successfully run away!" << endl;
+
+			}
+			break;
+		default:
+			cout << "sorry that's not an option" << endl;
+		}//end switch
+		cout << "your health:" << playerhealth << endl;
+		cout << "monsther's health:" << monsterhealth << endl;
+	}
+	cout << "end of battle........................." << endl;
+}
