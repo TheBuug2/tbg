@@ -84,7 +84,7 @@ int main() {
 				room = 4;
 			else if (input == "talk" || input == "t" || input == "Talk" || input == "T") {
 				cout << "[Bob]:Well it seems like the guards been attacked by something" << endl;
-				cout << "[Player]:It semms so" << endl;
+				cout << "[Player]:It seems so" << endl;
 				cout << "[Bob]:We should be caut" << endl;
 			}
 			else if (input == "loot" || input == "l" || input == "L" || input == "Loot")
