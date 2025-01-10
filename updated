@@ -1,173 +1,242 @@
 
 #include<iostream>
+#include<windows.h>
+#pragma comment(lib, "winmm.lib")
 using namespace std;
 
 //global variables
-string inventory[8];
+string inventory[9];
 int playerhealth = 100;
-
+int monsterhealth = 30;
 //function declaration
 void NPC();
 void BattleSys();
 
 int main() {
+	system("color 02");
+	system("color 0E");
 	int room = 1;
 	string input;
 	cout << endl << "--------------------------" << endl;
 	cout << "your inventory:";
 	for (int i = 0; i < 9; i++)
 		cout << inventory[i] << " | ";
-	cout << endl;
+	cout << endl << endl;
+
+	while (playerhealth > 0 && monsterhealth > 0) {
+
+		switch (room) {
+		case 1://Room 1
+			system("color 02");
+			cout << "you wake up in bed from a loud alarm you wonder whats that about then you hear gunshots. you see your cellmate waking up as well" << endl;
+			cout << "  #########   " << endl;
+			cout << "#############" << endl;
+			cout << "##         ##" << endl;
+			cout << "#  ~~   ~~  #" << endl;
+			cout << "#  ()   ()  #" << endl;
+			cout << "(     ^     )" << endl;
+			cout << " |         | " << endl;
+			cout << " | { === } | " << endl;
+			cout << " \\        / " << endl;
+			cout << "  / ----- \\  " << endl;
+			cout << "you can go the out to the hallway(s) or you could talk to Bob(t)" << endl;
+			cin >> input;
+			if (input == "south" || input == "go south" || input == "s" || input == "South" || input == "go South" || input == "S")
+				room = 2;
+			else if (input == "talk" || input == "t" || input == "Talk" || input == "T") {
+				cout << "[BOB]:So do you know whats going on those" << endl;
+				cout << "[Player]:No i'm just confused as you" << endl;
+				cout << "[BOB]:Hmm the alarm and the gunshots is something we need to take with caution" << endl;
+				cout << "[Player]:Yeah" << endl;
+			}
+			break;
+		case 2://Room 2
+			system("color 0E");
+			cout << "as you walk out of your cell you see guards on the ground and what to seems to be claw marks on the walls of the corridor" << endl;
+			cout << "@@@@@@@@@@@@@@@@@@@@@@@@%#=.+#%@@@@@@@@%##@@@@@@@@@%*+%%%%%%@@%*-:-##@@@@@@@@@@@@@@@@@@@@@" << endl;
+			cout << "@@@@@@@@@@@@@@@@@@@@#@@@@@%#*.-*%@@%%%%%###@@@@@@%%*=#####%%#+=.=**%@@@%#@@@@@@@@@@@@@@@@@" << endl;
+			cout << "@@@@@@%@@@@@@@@@@@@@@@@%@@@@@**++#***++**+*%@@%%%%#=+*=-=+***+**#@@@%@@@@@@@@@@@@@@@%@@@@@" << endl;
+			cout << "@@@@%%%%%@@%%@%%@@@@@@@@@@%%@@@%#*===*#**#++%%%###*=**+++=--+*%@@@@@@@#@@@@@@@@@%#%@%%%%%%" << endl;
+			cout << "@@%#*+==+*###@%##%@@@@@@%**#@%#%@%#=.-=++**++###**=++++=-.-*@@@%#%%#++#@@@@@@@@%##%@%%#*++" << endl;
+			cout << "@@@%%%####***@@%#%@@@@@@*++*%=+%%##%%++==+++=+*+++=+====+#@@@@@@+=**==+@@@@@@@%%###%###%%%" << endl;
+			cout << "@@%%%%%%####*%%@%@@@@@@@*===*==%@@#+**#*-:======--===:-*#=*+%@@*--====+%@@@@@%%**##%##%@%%" << endl;
+			cout << "@@%%@@@%%%###%#%@@@@@@%%*+==*-=*#*+--+@*+*=::-::::::-=+*@=--*%#+--==-=+%@@@@@%#***#%*%@@@@" << endl;
+			cout << "@@@@@@@%##***#%##@@@@@%@%..:=:-+#*+:-=*-:=:-::.....::--=*:::+*#+:.::..=@@@@@@%###**#+**###" << endl;
+			cout << "@@@%%%@@@%@@###***%@@%%#+=-:-:-+#*+::-*-.:....    ...::-*:.:+**=-.:::=-%@@@@@%#*++@*#%%*%%" << endl;
+			cout << "@@@%%%####****#****%%%*%#==+%.:+#*+--=#=-*=-:... .:-:++*#-::+*#=-:*+=-+@@@@@@##*+*%+++***#" << endl;
+			cout << "@@@%%###****+**++**%%#**=:..=--*@@#+*#+-:--::--..-:-:+++**##@@@+::=-=-=%@@@@@##***%++****#" << endl;
+			cout << "@@@%####***+=-+**%@@@%*#=..:+-+#*==--%@@@@@@@@=:.:--=-=*%%%*++##+-+=--=%@@@@@#****%******#" << endl;
+			cout << "@@@###**=:.  .+*#@@@@@@@@@@@@@++**+=-%%#*+=-:...=@*.......:-#%##@@@@@%*@@@@@@%###*%####%%%" << endl;
+			cout << "@@@#*=:..    :#@@@@@@@@@@@%@@@*+==--:.....=@@@@@@@%@*-++++@@@#+**=-=**#@@@@@@@@@%%@%%%%%@@" << endl;
+			cout << "@@@*=-=:..:=*@@@@*++=-::-*%%*=+%@%*=-=++*@@@@@@@@@@@@@@@@@@@@##+:-+#*=-+#%%%@@@@@@@@@@@@@@" << endl;
+			cout << "@@@+:-=====-:=*#++::-**=---:++*#%##@@%#%@@@@@@@@@@@@@@%#+::**#*+-:::+@@@*=-#%%@@@@@@@@@@@@" << endl;
+			cout << "@@@@%%%*=--=+*=#@@@@@@@%%+::#%#+#%@%##%%@@@@@@@@@@@##****+==*##%+:=+%*%%@@@%*-=%@@@@@@@@@@" << endl;
+			cout << "@@@@%*++*+%@@@@@@@@@@@@@@@@@@%*+@@@@%%#%@@@@@@@%%%%%###%#****##*#*%--*%@@@@@@@@%*:+@@@@@@@" << endl;
+			cout << "@@@@@*=*#%@@@@@@@@@@@@@@@@@%#%%%%%%%%%@@@@@@%#*%%%%%%%%%##@@@@@#*%#%%@@@@@@@@@@@@@@%=-%@@@" << endl;
+			cout << "@+-%@@@@@@@@@@@@@@@@@@@@@@%#%@@@@@@@@@@@@@@@@##%@@@@@@@@%%#%@@@##%@@@@@@@@@@@@@@@@@@@@@#-=" << endl;
+			cout << "you can go north, south, or east, also you can talk to bob(talk) or you can search one of the guards(loot)" << endl;
+			cin >> input;
+			if (input == "south" || input == "go south" || input == "s" || input == "South" || input == "go South" || input == "S")
+				room = 3;
+			else if (input == "north" || input == "go north" || input == "n" || input == "North" || input == "go North" || input == "N")
+				room = 1;
+			else if (input == "east" || input == "go east")
+				room = 4;
+			else if (input == "talk" || input == "t" || input == "Talk" || input == "T") {
+				cout << "[Bob]:Well it seems like the guards been attacked by something" << endl;
+				cout << "[Player]:It semms so" << endl;
+				cout << "[Bob]:We should be caut" << endl;
+			}
+			else if (input == "loot" || input == "l" || input == "L" || input == "Loot")
+				if(inventory[2] != "armor") {
+				inventory[2] = "armor";
+				cout << "you found some guards armor for you and Bob" << endl;
+				
+
+			}
+			
+
+				break;
+		case 3://Room 3
+			cout << "you're in room 3, you can go n" << endl;
+			cin >> input;
+			if (input == "north" || input == "go north" || input == "n" || input == "North" || input == "go North" || input == "N")
+				room = 2;
+			break;
+
+		case 4://Room 4
+			cout << "you're in room 4, you can go s" << endl;
+			cin >> input;
+			if (input == "north" || input == "go north")
+				room = 5;
+			if (input == "south" || input == "go south")
+				room = 6;
+			if (input == "west" || input == "go west")
+				room = 2;
+
+			break;
+
+		case 5://Room 5
+			cout << "you're in an armory, You can go back the door(s)" << endl;
+			cin >> input;
+			if (input == "south" || input == "go south" || input == "s" || input == "South" || input == "go South" || input == "S")
+				room = 4;
+			else if (input == "loot" || input == "l")
+				if (inventory[2] != "armor") {
+					inventory[2] = "armor";
+					cout << "you found some guards armor for you and Bob" << endl;
+				}
+			break;
+		case 6:// Room 6
+			cout << "you're in room 6, you can go e" << endl;
+			cin >> input;
+			if (input == "east" || input == "go west")
+				room = 7;
+			BattleSys();
+			break;
+		case 7:
+			cout << "you're in room 7, you can go w, s or e" << endl;
+			cin >> input;
+			if (input == "s")
+				room = 8;
+			else if (input == "w")
+				room = 6;
+
+			break;
+		case 8:
+			cout << "you're in room 8, you can n" << endl;
+			cin >> input;
+			if (input == "n")
+				room = 7;
+			break;
+		case 9:
+			cout << "you're in room 9, you can go n or w" << endl;
+			cin >> input;
+			if (input == "n")
+				room = 10;
+			else if (input == "w")
+				room = 7;
+			break;
+		case 10:
+			cout << "you're in room 10, you can go w, n or s" << endl;
+			cin >> input;
+			if (input == "w")
+				room = 11;
+			else if (input == "s")
+				room = 9;
+			else if (input == "n")
+				room = 12;
+			break;
+		case 11:
+			cout << "you're in room 11, you can go e" << endl;
+			cin >> input;
+			if (input == "e")
+				room = 10;
+			break;
+
+		case 12:
+			cout << "you're in room 12, you can go e, n or s" << endl;
+			cin >> input;
+			if (input == "s")
+				room = 10;
+			else if (input == "n")
+				room = 13;
+			else if (input == "s")
+				room = 14;
+			break;
+
+		case 13:
+			cout << "you're in room 13, you can go s" << endl;
+			cin >> input;
+			if (input == "s")
+				room = 12;
+			break;
+
+		case 14:
+			cout << "you're in room 14, you can go w" << endl;
+			cin >> input;
+			if (input == "w")
+				room = 12;
+			break;
 
 
-	switch (room) {
-	case 1:
-		cout << "you wake up in bed from a loud alarm you wonder whats that about. you see your cellmate waking up as well" << endl;
-		cout << "you can go the out to the hallway(s) or you could talk to your cellmate(t)" << endl;
-		cin >> input;
-		if (input == "s")
-			room = 2;
-		break;
-	case 2:
-		cout << "as you walk into the hallway you see " << endl;
-		cout << "you can go north, south, or east" << endl;
-		cin >> input;
-		if (input == "s")
-			room = 3;
-		else if (input == "n")
-			room = 1;
-		else if (input == "e")
-			room = 5;
-		else if (inventory[2] != "baton") {
-			inventory[2] = "baton";
-			cout << "you got a baton!" << endl;
-		}
-		BattleSys(); //function call
-		cin >> input;
-		break;
-	case 3:
-		cout << "you're in room 3, you can go n" << endl;
-		cin >> input;
-		if (input == "n")
-			room = 2;
-		break;
+		}//end switch
 
-	case 4:
-		cout << "you're in room 4, you can go s" << endl;
-		cin >> input;
-		if (input == "s")
-			room = 5;
-		break;
-
-	case 5:
-		cout << "you're in room 5, you can go n, s or w" << endl;
-		cin >> input;
-		if (input == "n")
-			room = 4;
-		if (input == "s")
-			room = 7;
-		if (input == "w")
-			room = 2;
-		break;
-	case 6:
-		cout << "you're in room 6, you can go e" << endl;
-		cin >> input;
-		if (input == "e")
-			room = 7;
-		break;
-	case 7:
-		cout << "you're in room 7, you can go w, s or e" << endl;
-		cin >> input;
-		if (input == "s")
-			room = 8;
-		else if (input == "w")
-			room = 6;
-
-		break;
-	case 8:
-		cout << "you're in room 8, you can n" << endl;
-		cin >> input;
-		if (input == "n")
-			room = 7;
-		break;
-	case 9:
-		cout << "you're in room 9, you can go n or w" << endl;
-		cin >> input;
-		if (input == "n")
-			room = 10;
-		else if (input == "w")
-			room = 7;
-		break;
-	case 10:
-		cout << "you're in room 10, you can go w, n or s" << endl;
-		cin >> input;
-		if (input == "w")
-			room = 11;
-		else if (input == "s")
-			room = 9;
-		else if (input == "n")
-			room = 12;
-		break;
-	case 11:
-		cout << "you're in room 11, you can go e" << endl;
-		cin >> input;
-		if (input == "e")
-			room = 10;
-		break;
-
-	case 12:
-		cout << "you're in room 12, you can go e, n or s" << endl;
-		cin >> input;
-		if (input == "s")
-			room = 10;
-		else if (input == "n")
-			room = 13;
-		else if (input == "s")
-			room = 14;
-		break;
-
-	case 13:
-		cout << "you're in room 13, you can go s" << endl;
-		cin >> input;
-		if (input == "s")
-			room = 12;
-		break;
-
-	case 14:
-		cout << "you're in room 14, you can go w" << endl;
-		cin >> input;
-		if (input == "w")
-			room = 12;
-		break;
-
-	
-	}//end switch
-
-
-
+	}
 }//end of main
 
 //function definitions 
 void NPC() {
 	int num = rand() % 100 + 1; //gets a number b/t 1-100
 	if (num < 10)//10% chance
-		cout << "" << endl;
-	else if (num < 15)//5% chance
-		cout << "" << endl;
-	else if (num < 30)//15% chance
-		cout << "" << endl;
-	else if (num < 50) {//20% chance
-		cout << "here you go my friend" << endl;
+		cout << "Hello my friend" << endl;
+	else if (num < 20)//10% chance
+		cout << "What happened here" << endl;
+	else if (num < 30)//10% chance
+		cout << "this place really sucks" << endl;
+	else if (num < 40) {//10% chance
+		cout << "You're going to need this my friend" << endl;
 
-		inventory[4] = "medkit";
+		inventory[3] = "medkit";
 	}
-	else//50% chance
+	else if (num < 50)//10% chance
+		cout << "hmm?" << endl;
+	else if (num < 55)//5% chance
+		cout << "this game kinda sucks" << endl;
+	else if (num < 65)//10% chance
+		cout << "these guards are terrible" << endl;
+	else if (num < 80)//15% chance
+		cout << "Huh?" << endl;
+	else if (num < 90)//10% chance
+		cout << "how's your day been going on" << endl;
+	else
 		cout << "" << endl;
 }
 
 //funcution definitions
 void BattleSys() {
-	int monsterhealth = 20;
+	int playerhealth = 100;
+	int monsterhealth = 30;
 	int input;
 	int num;
 	cout << endl << endl << "-----------------------BATTLE TIME!!-----------------------" << endl;
